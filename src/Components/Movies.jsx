@@ -50,7 +50,7 @@ const Movies = ({searchquery}) => {
           </div>
         ))}
 
-        {/* {movies.length===0 && <p className='flex items-center justify-center text-3xl h-[70vh]'>No movies found..</p>} */}
+        {movies && movies.length===0 && <p className='flex items-center justify-center text-3xl h-[70vh]'>No movies found..</p>}
 
       </div>
       {showModal && <MovieDetails setShowModal={setShowModal} movie={Movie} />}
