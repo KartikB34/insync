@@ -17,7 +17,7 @@ const MovieDetails = ({movie, setShowModal}) => {
                 src={`${process.env.REACT_APP_IMAGE_URL+movie.poster_path}`} 
                 alt={movie.title} 
                 onClick={()=>{setShowModal(false)}} 
-                className="z-30 w-[100px] md:w-[266px]"
+                className="z-30 w-[100px] md:w-[266px] object-cover"
             />
             <div className='md:ml-6 mt-4 md:mt-0 max-w-[214px]'>
                 <p>Release date: {movie.release_date}</p>
