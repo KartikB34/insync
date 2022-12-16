@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import MovieDetails from './MovieDetails';
 import { loadMovies } from '../Actions/Movies';
-import Loader from './Loader';
+// import Loader from './Loader';
 
 const Movies = ({searchquery}) => {
 
@@ -25,7 +25,7 @@ const Movies = ({searchquery}) => {
     }
   },[dispatch, error])
 
-  return ( loading ? <Loader /> :
+  return ( loading ? <p>loading...</p> :
     <div className='mt-6'>
       <p className='font-bold text-2xl'>{searchquery? "Showing search results:" : "Most Recent Movies"}</p>
 
