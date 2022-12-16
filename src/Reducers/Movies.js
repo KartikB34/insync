@@ -18,7 +18,20 @@ export const moviesReducer = createReducer(initialState, {
         state.error = action.payload;
     },
 
-    clearErrors: (state) =>{
+    //search movies request
+    searchMoviesRequest: (state) => {
+        state.loading = true
+    },
+    searchMoviesSuccess: (state, action) => {
+        state.loading = false;
+        state.movies = action.payload;
+    },
+    searchMoviesFailure: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+    },
+
+    clearError: (state) =>{
         state.error = null
     }
 })

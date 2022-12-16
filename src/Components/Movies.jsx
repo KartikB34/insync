@@ -1,13 +1,30 @@
 import React, {useState} from 'react'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { ToastContainer, toast } from 'react-toastify';
 
 import MovieDetails from './MovieDetails';
+import { loadMovies } from '../Actions/Movies';
 
-const Movies = ({movies}) => {
+const Movies = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [Movie, setMovie] = useState();
 
-  return (
+  const dispatch = useDispatch();
+  const {loading, error, movies} = useSelector((state) => state.movies)
+  console.log(movies)
+
+  useEffect(()=>{
+    dispatch(loadMovies())
+
+    if(error){
+      toast.error(error)
+      dispatch({type:"clearError"})
+    }
+  },[dispatch, error])
+
+  return ( loading ? <p>Loading...</p> :
     <div className='mt-6'>
       <p className='font-bold text-2xl'>Most Recent Movies</p>
 
@@ -18,7 +35,7 @@ const Movies = ({movies}) => {
           <div 
             className='relative shadow-lg rounded-md h-[348px] w-[282px] m-6' 
             onClick={()=>{setShowModal(true); setMovie(movie)}}
-            key={movie.title}
+            key={movie.id}
           >
             <div className='absolute border border-black top-2 left-3 rounded-full bg-white h-[34px] w-[34px] flex justify-center items-center'>
               {movie.vote_average}
@@ -34,6 +51,7 @@ const Movies = ({movies}) => {
 
       </div>
       {showModal && <MovieDetails setShowModal={setShowModal} movie={Movie} />}
+      <ToastContainer />
     </div>
   )
 }

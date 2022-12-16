@@ -2,7 +2,7 @@ import React from 'react'
 import close from "../Assests/close.svg"
 
 const MovieDetails = ({movie, setShowModal}) => {
-    console.log(movie)
+ 
   return (
     <div className='fixed inset-0 bg-opacity-30 backdrop-blur-sm bg-gray-800 flex justify-center items-center'>
       <div className='bg-white p-6'>
@@ -25,6 +25,7 @@ const MovieDetails = ({movie, setShowModal}) => {
                 <p className=''>{movie.vote_average}/10{" ("}{movie.vote_count}{" total votes)"}</p>
             </div>
         </div>
+        
       </div>
     </div>
   )
