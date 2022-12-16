@@ -4,7 +4,7 @@ import Navbar from "./Components/Navbar";
 function App() {
 
   return (
-    <div className="">
+    <div className="py-6 px-20">
       <Navbar />
       <Movies />
     </div>
