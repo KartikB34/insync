@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import MovieDetails from './MovieDetails';
 import { loadMovies } from '../Actions/Movies';
 
-const Movies = () => {
+const Movies = ({searchquery}) => {
 
   const [showModal, setShowModal] = useState(false);
   const [Movie, setMovie] = useState();
@@ -26,7 +26,7 @@ const Movies = () => {
 
   return ( loading ? <p>Loading...</p> :
     <div className='mt-6'>
-      <p className='font-bold text-2xl'>Most Recent Movies</p>
+      <p className='font-bold text-2xl'>{searchquery? "Showing search results:" : "Most Recent Movies"}</p>
 
       {/* <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 sm:gap-4'> */}
       <div className='flex flex-wrap items-center justify-center'>

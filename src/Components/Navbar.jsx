@@ -4,7 +4,7 @@ import { loadMovies, searchMovies } from '../Actions/Movies'
 import logo from "../Assests/logo.svg"
 import search from "../Assests/search.svg"
 
-const Navbar = () => {
+const Navbar = ({setSearch}) => {
 
   const [text, setText] = useState("")
   const dispatch = useDispatch()
@@ -14,8 +14,10 @@ const Navbar = () => {
 
     if(text){
       dispatch(searchMovies(text))
+      setSearch(true)
     }else{
       dispatch(loadMovies())
+      setSearch(false)
     }
   }
 
