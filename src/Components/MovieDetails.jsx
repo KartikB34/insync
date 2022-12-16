@@ -19,7 +19,7 @@ const MovieDetails = ({movie, setShowModal}) => {
                 onClick={()=>{setShowModal(false)}} 
                 className="z-30 w-[100px] md:w-[266px] object-cover"
             />
-            <div className='md:ml-6 mt-4 md:mt-0 max-w-[214px]'>
+            <div className='md:ml-6 mt-4 md:mt-0 md:max-w-[214px]'>
                 <p>Release date: {movie.release_date}</p>
                 <p className='my-4'>{movie.overview}</p>
                 <p className=''>{movie.vote_average}/10{" ("}{movie.vote_count}{" total votes)"}</p>
