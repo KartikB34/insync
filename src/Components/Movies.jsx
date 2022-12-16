@@ -5,6 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import MovieDetails from './MovieDetails';
 import { loadMovies } from '../Actions/Movies';
+import Loader from './Loader';
 
 const Movies = ({searchquery}) => {
 
@@ -24,7 +25,7 @@ const Movies = ({searchquery}) => {
     }
   },[dispatch, error])
 
-  return ( loading ? <p>Loading...</p> :
+  return ( loading ? <Loader /> :
     <div className='mt-6'>
       <p className='font-bold text-2xl'>{searchquery? "Showing search results:" : "Most Recent Movies"}</p>
 
@@ -48,6 +49,8 @@ const Movies = ({searchquery}) => {
             <p className={`absolute bottom-0 ${showModal? "" : "z-10"} bg-white w-full px-1 text-center py-2 rounded-b-md`}>{movie.title}</p>
           </div>
         ))}
+
+        {movies.length===0 && <p className='flex items-center justify-center text-3xl h-[70vh]'>No movies found..</p>}
 
       </div>
       {showModal && <MovieDetails setShowModal={setShowModal} movie={Movie} />}
