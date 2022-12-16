@@ -1,29 +1,13 @@
-import React, {useEffect, useState} from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { loadMovies } from '../Actions/Movies';
-import { ToastContainer, toast } from 'react-toastify';
+import React, {useState} from 'react'
 
 import MovieDetails from './MovieDetails';
 
-const Movies = () => {
-
-  const dispatch = useDispatch();
-  const {loading, error, movies} = useSelector((state) => state.movies)
+const Movies = ({movies}) => {
 
   const [showModal, setShowModal] = useState(false);
   const [Movie, setMovie] = useState();
-  // console.log(movies)
 
-  useEffect(()=>{
-    dispatch(loadMovies())
-
-    if(error){
-      toast.error(error)
-    }
-  },[dispatch, error])
-
-
-  return ( loading ? <p>Loading</p> :
+  return (
     <div className='mt-6'>
       <p className='font-bold text-2xl'>Most Recent Movies</p>
 
@@ -50,7 +34,6 @@ const Movies = () => {
 
       </div>
       {showModal && <MovieDetails setShowModal={setShowModal} movie={Movie} />}
-      <ToastContainer />
     </div>
   )
 }
